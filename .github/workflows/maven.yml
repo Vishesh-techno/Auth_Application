@@ -31,6 +31,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
+      working-directory: auth_app
       run: mvn clean install
 
    
