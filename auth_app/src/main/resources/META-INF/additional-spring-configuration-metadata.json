@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "security.jwt.refresh-token-cookie-name",
+    "type": "java.lang.String",
+    "description": "A description for 'security.jwt.refresh-token-cookie-name'"
+  },
+  {
+    "name": "security.jwt.access-ttl-seconds",
+    "type": "java.lang.String",
+    "description": "A description for 'security.jwt.access-ttl-seconds'"
+  },
+  {
+    "name": "security.jwt.secret",
+    "type": "java.lang.String",
+    "description": "A description for 'security.jwt.secret'"
+  }
+]}
