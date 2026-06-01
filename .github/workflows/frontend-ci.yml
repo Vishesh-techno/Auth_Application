@@ -1,0 +1,33 @@
+name: Frontend CI
+
+on:
+  push:
+    paths:
+      - 'auth_app_frontend/**'
+
+  pull_request:
+    paths:
+      - 'auth_app_frontend/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: auth_app_frontend
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Frontend
+        run: npm run build
