@@ -1,0 +1,46 @@
+services: 
+
+   mysql:
+    image: mysql:8.0
+    container_name: auth_mysql
+
+    environment:
+      MYSQL_ROOT_PASSWORD: Vivoy83@
+      MYSQL_DATABASE: auth_app
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    ports:
+      - "3307:3306"
+
+    restart: always
+
+   backend:
+     build:
+       context: ./auth_app
+     container_name: auth_backend
+     
+     ports:
+       - "8080:8080"
+
+     depends_on:
+      - mysql
+
+     restart: always
+
+   frontend:
+     build:
+       context: ./auth_app_frontend
+     container_name: auth_frontend
+     
+     ports:
+       - "8081:80"
+
+     depends_on:
+       - backend
+
+     restart: always
